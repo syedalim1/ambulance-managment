@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Emergency request elements
     const requestAmbulanceBtn = document.getElementById('request-ambulance-btn');
     const videoCallBtn = document.getElementById('video-call-btn');
+    const helplineBtn = document.getElementById('helpline-btn');
     const emergencyModal = document.getElementById('emergency-modal');
     const confirmationModal = document.getElementById('confirmation-modal');
     const videoCallModal = document.getElementById('video-call-modal');
@@ -16,24 +17,24 @@ document.addEventListener('DOMContentLoaded', function() {
     const emergencyType = document.getElementById('emergency-type');
     const emergencyDetails = document.getElementById('emergency-details');
     const refreshLocationBtn = document.getElementById('refresh-location-btn');
-    const cancelEmergencyRequestBtn = document.getElementById('cancel-emergency-request');
-    const confirmEmergencyRequestBtn = document.getElementById('confirm-emergency-request');
+    const cancelEmergencyBtn = document.getElementById('cancel-emergency-btn');
+    const submitEmergencyBtn = document.getElementById('submit-emergency-btn');
     
     // Confirmation modal elements
     const etaTime = document.getElementById('eta-time');
-    const callDriverBtn = document.getElementById('call-driver-btn');
-    const trackAmbulanceBtn = document.getElementById('track-ambulance-btn');
+    const closeConfirmationBtn = document.getElementById('close-confirmation');
+    const callDriverBtn = document.getElementById('call-driver');
     
     // Video call elements
     const callTimer = document.querySelector('.call-timer');
-    const muteBtn = document.querySelector('.mute-btn');
-    const videoCamBtn = document.querySelector('.video-btn');
+    const controlBtns = document.querySelectorAll('.control-btn');
     const endCallBtn = document.querySelector('.end-call-btn');
-    const chatBtn = document.querySelector('.chat-btn');
-    const shareBtn = document.querySelector('.share-btn');
+    const mainVideoStream = document.querySelector('.main-video-stream');
+    const selfVideoStream = document.querySelector('.self-video-stream');
     
-    // Contact call buttons
-    const contactCallBtns = document.querySelectorAll('.contact-call-btn');
+    // Contact action buttons
+    const contactActionBtns = document.querySelectorAll('.contact-actions button');
+    const addContactCard = document.querySelector('.add-contact-card');
     
     // Location info element
     const locationInfo = document.getElementById('location-info');
@@ -195,64 +196,94 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Cancel emergency request button
-    cancelEmergencyRequestBtn.addEventListener('click', function() {
-        closeModal(emergencyModal);
-    });
-    
-    // Confirm emergency request button
-    confirmEmergencyRequestBtn.addEventListener('click', function() {
-        // Validate form
-        if (emergencyType.value === '') {
-            alert('Please select an emergency type');
-            return;
-        }
-        
-        // Close emergency modal
-        closeModal(emergencyModal);
-        
-        // Generate random ETA
-        const minEta = 5;
-        const maxEta = 15;
-        const eta = Math.floor(Math.random() * (maxEta - minEta + 1)) + minEta;
-        etaTime.textContent = `${eta} minutes`;
-        
-        // Show confirmation modal
-        openModal(confirmationModal);
-        
-        // Simulate ambulance movement
-        simulateAmbulanceMovement();
-        
-        // In a real app, this would send the request to the server
-        console.log({
-            location: emergencyLocation.value,
-            type: emergencyType.value,
-            details: emergencyDetails.value
+    // Cancel emergency button
+    if (cancelEmergencyBtn) {
+        cancelEmergencyBtn.addEventListener('click', function() {
+            closeModal(emergencyModal);
         });
-        
-        // Notify emergency contacts
-        notifyEmergencyContacts();
-    });
+    }
+    
+    // Submit emergency button
+    if (submitEmergencyBtn) {
+        submitEmergencyBtn.addEventListener('click', function() {
+            // Validate form
+            if (emergencyType.value === '') {
+                alert('Please select an emergency type');
+                return;
+            }
+            
+            // Close emergency modal
+            closeModal(emergencyModal);
+            
+            // Generate random ETA
+            const minEta = 5;
+            const maxEta = 15;
+            const eta = Math.floor(Math.random() * (maxEta - minEta + 1)) + minEta;
+            if (etaTime) etaTime.textContent = `${eta} minutes`;
+            
+            // Show confirmation modal
+            setTimeout(function() {
+                openModal(confirmationModal);
+                
+                // Simulate ambulance movement
+                simulateAmbulanceMovement();
+                
+                // Notify emergency contacts
+                notifyEmergencyContacts();
+            }, 500);
+            
+            // In a real app, this would send the request to the server
+            console.log({
+                location: emergencyLocation.value,
+                type: emergencyType.value,
+                details: emergencyDetails.value
+            });
+        });
+    }
     
     // Call driver button
-    callDriverBtn.addEventListener('click', function() {
-        // In a real app, this would initiate a call
-        window.location.href = 'tel:+919876543210';
-    });
-    
-    // Track ambulance button
-    trackAmbulanceBtn.addEventListener('click', function() {
-        // In a real app, this would open a tracking interface
-        alert('Ambulance tracking would open in a real app');
-    });
-    
-    // Contact call buttons
-    contactCallBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            const phone = this.getAttribute('data-phone');
-            window.location.href = `tel:${phone}`;
+    if (callDriverBtn) {
+        callDriverBtn.addEventListener('click', function() {
+            // In a real app, this would initiate a phone call
+            alert('Calling driver...');
         });
-    });
+    }
+    
+    // Close confirmation button
+    if (closeConfirmationBtn) {
+        closeConfirmationBtn.addEventListener('click', function() {
+            closeModal(confirmationModal);
+        });
+    }
+    
+    // Helpline button
+    if (helplineBtn) {
+        helplineBtn.addEventListener('click', function() {
+            // In a real app, this would initiate a phone call to emergency services
+            alert('Calling emergency helpline...');
+        });
+    }
+    
+    // Contact action buttons
+    if (contactActionBtns) {
+        contactActionBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const action = this.getAttribute('title');
+                if (action === 'Call contact') {
+                    alert('Calling contact...');
+                } else if (action === 'Edit contact') {
+                    alert('Edit contact feature would open in a real app');
+                }
+            });
+        });
+    }
+    
+    // Add contact card
+    if (addContactCard) {
+        addContactCard.addEventListener('click', function() {
+            alert('Add contact form would open in a real app');
+        });
+    }
     
     // Close modals
     closeModalButtons.forEach(button => {
@@ -279,40 +310,43 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Video call controls
-    muteBtn.addEventListener('click', function() {
-        this.classList.toggle('active');
-        const icon = this.querySelector('i');
-        
-        if (this.classList.contains('active')) {
-            icon.className = 'fas fa-microphone-slash';
-        } else {
-            icon.className = 'fas fa-microphone';
-        }
-    });
+    if (controlBtns) {
+        controlBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.classList.toggle('active');
+                const icon = this.querySelector('i');
+                const action = this.getAttribute('title');
+                
+                if (action === 'Toggle microphone') {
+                    if (this.classList.contains('active')) {
+                        icon.classList.remove('fa-microphone');
+                        icon.classList.add('fa-microphone-slash');
+                    } else {
+                        icon.classList.remove('fa-microphone-slash');
+                        icon.classList.add('fa-microphone');
+                    }
+                } else if (action === 'Toggle video') {
+                    if (this.classList.contains('active')) {
+                        icon.classList.remove('fa-video');
+                        icon.classList.add('fa-video-slash');
+                    } else {
+                        icon.classList.remove('fa-video-slash');
+                        icon.classList.add('fa-video');
+                    }
+                } else if (action === 'Chat') {
+                    alert('Chat feature would be available in a real app');
+                } else if (action === 'Share screen') {
+                    alert('Screen sharing would be available in a real app');
+                }
+            });
+        });
+    }
     
-    videoCamBtn.addEventListener('click', function() {
-        this.classList.toggle('active');
-        const icon = this.querySelector('i');
-        
-        if (this.classList.contains('active')) {
-            icon.className = 'fas fa-video-slash';
-        } else {
-            icon.className = 'fas fa-video';
-        }
-    });
-    
-    endCallBtn.addEventListener('click', function() {
-        endVideoCall();
-        closeModal(videoCallModal);
-    });
-    
-    chatBtn.addEventListener('click', function() {
-        this.classList.toggle('active');
-    });
-    
-    shareBtn.addEventListener('click', function() {
-        this.classList.toggle('active');
-    });
+    if (endCallBtn) {
+        endCallBtn.addEventListener('click', function() {
+            endVideoCall();
+        });
+    }
     
     // Start video call
     function startVideoCall() {
@@ -364,29 +398,42 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // End video call
     function endVideoCall() {
-        // Clear call timer
-        clearInterval(callTimerInterval);
+        // Reset call timer
+        if (callTimer) {
+            callTimer.textContent = '00:00';
+        }
         
-        // Reset UI
-        const remoteStream = document.querySelector('.remote-stream');
-        remoteStream.innerHTML = `
-            <div class="remote-stream-placeholder">
+        // Reset video call UI
+        if (mainVideoStream) {
+            mainVideoStream.innerHTML = `
                 <div class="connecting-indicator">
-                    <div class="connecting-spinner"></div>
+                    <div class="spinner"></div>
                     <p>Connecting to doctor...</p>
                 </div>
-            </div>
-            <div class="remote-info">
-                <span class="remote-name">Dr. Sarah Johnson</span>
-            </div>
-        `;
+                <div class="doctor-info">
+                    <span>Dr. Sarah Johnson</span>
+                    <span>Emergency Medicine</span>
+                </div>
+            `;
+        }
         
-        const localStream = document.querySelector('.local-stream');
-        localStream.innerHTML = `
-            <div class="local-stream-placeholder">
-                <i class="fas fa-user"></i>
-            </div>
-        `;
+        // Reset control buttons
+        if (controlBtns) {
+            controlBtns.forEach(btn => {
+                btn.classList.remove('active');
+                const icon = btn.querySelector('i');
+                const action = btn.getAttribute('title');
+                
+                if (action === 'Toggle microphone') {
+                    icon.className = 'fas fa-microphone';
+                } else if (action === 'Toggle video') {
+                    icon.className = 'fas fa-video';
+                }
+            });
+        }
+        
+        // Close the video call modal
+        closeModal(videoCallModal);
     }
     
     // Simulate ambulance movement

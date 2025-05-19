@@ -1,0 +1,756 @@
+/* Emergency Call Page Styles */
+:root {
+  --emergency-primary: #e74c3c;
+  --emergency-secondary: #c0392b;
+  --emergency-accent: #3498db;
+  --emergency-text: #2c3e50;
+  --emergency-light: #ecf0f1;
+  --emergency-border-radius: 8px;
+  --emergency-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  --emergency-hover-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  --emergency-transition: all 0.3s ease;
+  --emergency-gradient: linear-gradient(135deg, #e74c3c, #c0392b);
+}
+
+/* Main emergency container */
+.emergency-container {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.emergency-header {
+  background: var(--emergency-gradient);
+  color: white;
+  padding: 30px;
+  border-radius: var(--emergency-border-radius);
+  box-shadow: var(--emergency-shadow);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.emergency-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+  opacity: 0.3;
+}
+
+.emergency-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.emergency-header p {
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Emergency options */
+.emergency-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.emergency-option {
+  background: white;
+  border-radius: var(--emergency-border-radius);
+  box-shadow: var(--emergency-shadow);
+  padding: 25px;
+  transition: var(--emergency-transition);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+}
+
+.emergency-option:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--emergency-hover-shadow);
+}
+
+.emergency-option .icon {
+  width: 80px;
+  height: 80px;
+  background: var(--emergency-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.emergency-option .icon i {
+  font-size: 2.5rem;
+  color: var(--emergency-primary);
+}
+
+.emergency-option h3 {
+  color: var(--emergency-text);
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.emergency-option p {
+  color: #7f8c8d;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Emergency contacts */
+.emergency-contacts {
+  background: white;
+  border-radius: var(--emergency-border-radius);
+  box-shadow: var(--emergency-shadow);
+  padding: 25px;
+}
+
+.emergency-contacts h3 {
+  color: var(--emergency-text);
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.emergency-contacts h3 i {
+  color: var(--emergency-primary);
+}
+
+.emergency-contacts p {
+  color: #7f8c8d;
+  margin-bottom: 20px;
+}
+
+.contacts-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  border-radius: var(--emergency-border-radius);
+  border: 1px solid #e0e0e0;
+  transition: var(--emergency-transition);
+}
+
+.contact-card:hover {
+  border-color: var(--emergency-primary);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.contact-card .contact-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--emergency-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contact-card .contact-avatar i {
+  font-size: 1.5rem;
+  color: var(--emergency-primary);
+}
+
+.contact-card .contact-info {
+  flex-grow: 1;
+}
+
+.contact-card .contact-info h4 {
+  color: var(--emergency-text);
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.contact-card .contact-info p {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.contact-card .contact-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.contact-card .contact-actions button {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: none;
+  background: var(--emergency-light);
+  color: var(--emergency-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--emergency-transition);
+}
+
+.contact-card .contact-actions button:hover {
+  background: var(--emergency-primary);
+  color: white;
+}
+
+/* Emergency modal */
+.emergency-modal-content {
+  max-width: 500px;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.emergency-modal-header {
+  background: var(--emergency-gradient);
+  color: white;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+}
+
+.emergency-modal-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.emergency-modal-body {
+  padding: 25px;
+}
+
+.emergency-form-group {
+  margin-bottom: 20px;
+}
+
+.emergency-form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--emergency-text);
+}
+
+.emergency-form-group input,
+.emergency-form-group textarea,
+.emergency-form-group select {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: var(--emergency-border-radius);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: var(--emergency-transition);
+}
+
+.emergency-form-group input:focus,
+.emergency-form-group textarea:focus,
+.emergency-form-group select:focus {
+  border-color: var(--emergency-primary);
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+  outline: none;
+}
+
+.emergency-form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.emergency-form-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.emergency-form-actions button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: var(--emergency-border-radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--emergency-transition);
+}
+
+.emergency-form-actions .cancel-btn {
+  background: #f1f2f6;
+  color: #7f8c8d;
+}
+
+.emergency-form-actions .cancel-btn:hover {
+  background: #e0e0e0;
+}
+
+.emergency-form-actions .submit-btn {
+  background: var(--emergency-primary);
+  color: white;
+}
+
+.emergency-form-actions .submit-btn:hover {
+  background: var(--emergency-secondary);
+}
+
+/* Confirmation modal */
+.confirmation-modal-content {
+  max-width: 450px;
+  text-align: center;
+  padding: 30px;
+}
+
+.confirmation-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.confirmation-icon {
+  width: 100px;
+  height: 100px;
+  background: #f1f9f7;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.confirmation-icon i {
+  font-size: 3rem;
+  color: #2ecc71;
+}
+
+.confirmation-container h2 {
+  color: var(--emergency-text);
+  margin-bottom: 15px;
+}
+
+.confirmation-container p {
+  color: #7f8c8d;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.confirmation-details {
+  background: #f9f9f9;
+  border-radius: var(--emergency-border-radius);
+  padding: 15px;
+  width: 100%;
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+.confirmation-details p {
+  margin: 5px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.confirmation-details p span:first-child {
+  font-weight: 500;
+  color: var(--emergency-text);
+}
+
+.confirmation-details p span:last-child {
+  color: #7f8c8d;
+}
+
+.confirmation-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.confirmation-actions button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: var(--emergency-border-radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--emergency-transition);
+}
+
+.confirmation-actions .back-btn {
+  background: #f1f2f6;
+  color: #7f8c8d;
+}
+
+.confirmation-actions .back-btn:hover {
+  background: #e0e0e0;
+}
+
+.confirmation-actions .confirm-btn {
+  background: var(--emergency-primary);
+  color: white;
+}
+
+.confirmation-actions .confirm-btn:hover {
+  background: var(--emergency-secondary);
+}
+
+/* Video call modal */
+.video-call-modal-content {
+  max-width: 800px;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.video-call-container {
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+}
+
+.video-call-header {
+  background: var(--emergency-gradient);
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.video-call-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.video-call-header .call-timer {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.video-call-body {
+  flex-grow: 1;
+  background: #000;
+  position: relative;
+  display: flex;
+}
+
+.main-video-stream {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.self-video-stream {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 150px;
+  height: 100px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid white;
+}
+
+.video-call-controls {
+  background: #2c3e50;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.video-call-controls button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--emergency-transition);
+}
+
+.video-call-controls .control-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.video-call-controls .control-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.video-call-controls .end-call-btn {
+  background: var(--emergency-primary);
+  color: white;
+}
+
+.video-call-controls .end-call-btn:hover {
+  background: var(--emergency-secondary);
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .emergency-header h1 {
+    font-size: 2.2rem;
+  }
+  
+  .emergency-option .icon {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .emergency-option .icon i {
+    font-size: 2.2rem;
+  }
+  
+  .video-call-modal-content {
+    max-width: 90%;
+  }
+  
+  .video-call-container {
+    height: 450px;
+  }
+  
+  .self-video-stream {
+    width: 120px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .emergency-container {
+    margin: 20px auto;
+  }
+  
+  .emergency-header {
+    padding: 25px 20px;
+  }
+  
+  .emergency-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .emergency-header p {
+    font-size: 1rem;
+  }
+  
+  .emergency-options {
+    grid-template-columns: 1fr;
+  }
+  
+  .emergency-option {
+    padding: 20px;
+  }
+  
+  .emergency-option .icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+  }
+  
+  .emergency-option .icon i {
+    font-size: 1.8rem;
+  }
+  
+  .emergency-option h3 {
+    font-size: 1.2rem;
+  }
+  
+  .contacts-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .emergency-modal-content,
+  .confirmation-modal-content {
+    width: 90%;
+  }
+  
+  .emergency-form-actions,
+  .confirmation-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .emergency-form-actions button,
+  .confirmation-actions button {
+    width: 100%;
+  }
+  
+  .video-call-container {
+    height: 400px;
+  }
+  
+  .video-call-controls {
+    padding: 10px;
+    gap: 15px;
+  }
+  
+  .video-call-controls button {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .self-video-stream {
+    width: 100px;
+    height: 70px;
+    bottom: 15px;
+    right: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .emergency-container {
+    margin: 15px auto;
+    padding: 0 15px;
+  }
+  
+  .emergency-header {
+    padding: 20px 15px;
+  }
+  
+  .emergency-header h1 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .emergency-header p {
+    font-size: 0.9rem;
+  }
+  
+  .emergency-option {
+    padding: 15px;
+  }
+  
+  .emergency-option .icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 12px;
+  }
+  
+  .emergency-option .icon i {
+    font-size: 1.5rem;
+  }
+  
+  .emergency-option h3 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+  }
+  
+  .emergency-option p {
+    font-size: 0.85rem;
+  }
+  
+  .emergency-contacts {
+    padding: 20px 15px;
+  }
+  
+  .emergency-contacts h3 {
+    font-size: 1.1rem;
+  }
+  
+  .contact-card {
+    padding: 12px;
+    gap: 10px;
+  }
+  
+  .contact-card .contact-avatar {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .contact-card .contact-avatar i {
+    font-size: 1.2rem;
+  }
+  
+  .contact-card .contact-info h4 {
+    font-size: 0.9rem;
+  }
+  
+  .contact-card .contact-info p {
+    font-size: 0.8rem;
+  }
+  
+  .contact-card .contact-actions button {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .emergency-modal-header h2 {
+    font-size: 1.3rem;
+  }
+  
+  .emergency-form-group label {
+    font-size: 0.9rem;
+  }
+  
+  .emergency-form-group input,
+  .emergency-form-group textarea,
+  .emergency-form-group select {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+  
+  .confirmation-icon {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .confirmation-icon i {
+    font-size: 2.5rem;
+  }
+  
+  .confirmation-container h2 {
+    font-size: 1.3rem;
+  }
+  
+  .confirmation-container p {
+    font-size: 0.9rem;
+  }
+  
+  .video-call-container {
+    height: 350px;
+  }
+  
+  .video-call-header h3 {
+    font-size: 1.1rem;
+  }
+  
+  .video-call-controls button {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .self-video-stream {
+    width: 80px;
+    height: 60px;
+    bottom: 10px;
+    right: 10px;
+  }
+}
+
+/* Animation for emergency elements */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.emergency-pulse {
+  animation: pulse 2s infinite;
+}
