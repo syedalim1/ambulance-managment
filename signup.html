@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Ambulance Booking System</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/signup.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="notification" id="notification"></div>
+    <header>
+        <div class="logo">
+            <a href="index.html">
+            <h1>AmbulanceNow</h1>
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="signup.html" class="active">SIGN UP</a></li>
+                <li><a href="login.html" class="login-btn">LOGIN</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <main>
+        <section class="auth-container">
+            <div class="auth-card signup-card">
+                <div class="auth-header">
+                    <i class="fas fa-user-plus"></i>
+                    <h2>Create an Account</h2>
+                    <p>Select your account type to register</p>
+                </div>
+                <div class="auth-tabs">
+                    <button class="tab-btn active" data-form="patient-form">
+                        <i class="fas fa-user"></i> Patients
+                    </button>
+                    <button class="tab-btn" data-form="driver-form">
+                        <i class="fas fa-id-card"></i> Ambulance Drivers
+                    </button>
+                    <button class="tab-btn" data-form="hospital-form">
+                        <i class="fas fa-hospital"></i> Hospitals
+                    </button>
+                </div>
+
+                <!-- Patient Signup Form -->
+                <form id="patient-form" class="signup-form active">
+                    <h3><i class="fas fa-user-circle"></i> Patient Registration</h3>
+                    <div class="form-group">
+                        <label for="patient-name"><i class="fas fa-user"></i> Full Name</label>
+                        <input type="text" id="patient-name" name="name" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="patient-email"><i class="fas fa-envelope"></i> Email</label>
+                        <input type="email" id="patient-email" name="email" placeholder="Enter your email address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="patient-password"><i class="fas fa-lock"></i> Password</label>
+                        <div class="password-field">
+                            <input type="password" id="patient-password" name="password" placeholder="Create a strong password" required>
+                            <span class="password-toggle" id="togglePatientPassword">
+                                <i class="fas fa-eye"></i>
+                            </span>
+                        </div>
+                        <small class="password-hint">Password must be at least 8 characters long</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="patient-phone"><i class="fas fa-phone"></i> Phone Number</label>
+                        <input type="tel" id="patient-phone" name="phone" placeholder="Enter your phone number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="patient-address"><i class="fas fa-map-marker-alt"></i> Address</label>
+                        <textarea id="patient-address" name="address" placeholder="Enter your full address" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="patient-file"><i class="fas fa-file-medical"></i> Upload Medical History/ID (Optional)</label>
+                        <div class="file-upload">
+                            <input type="file" id="patient-file" name="file">
+                            <div class="file-upload-label"><i class="fas fa-cloud-upload-alt"></i> Choose File</div>
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-btn"><i class="fas fa-user-plus"></i> Create Account</button>
+                    <p class="auth-link">Already have an account? <a href="login.html">Login</a></p>
+                </form>
+
+                <!-- Driver Signup Form -->
+                <form id="driver-form" class="signup-form">
+                    <h3><i class="fas fa-id-card"></i> Ambulance Driver Registration</h3>
+                    <div class="form-group">
+                        <label for="driver-hospital"><i class="fas fa-hospital"></i> Hospital Name</label>
+                        <select id="driver-hospital" name="hospital" required>
+                            <option value="">Select Hospital</option>
+                            <option value="hospital1">YMTS Hospital</option>
+                            <option value="hospital2">City General Hospital</option>
+                            <option value="hospital3">Metro Medical Center</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="driver-name"><i class="fas fa-user"></i> Driver Name</label>
+                        <input type="text" id="driver-name" name="name" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="driver-email"><i class="fas fa-envelope"></i> Email</label>
+                        <input type="email" id="driver-email" name="email" placeholder="Enter your email address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="driver-password"><i class="fas fa-lock"></i> Password</label>
+                        <div class="password-field">
+                            <input type="password" id="driver-password" name="password" placeholder="Create a strong password" required>
+                            <span class="password-toggle" id="toggleDriverPassword">
+                                <i class="fas fa-eye"></i>
+                            </span>
+                        </div>
+                        <small class="password-hint">Password must be at least 8 characters long</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="driver-phone"><i class="fas fa-phone"></i> Phone Number</label>
+                        <input type="tel" id="driver-phone" name="phone" placeholder="Enter your phone number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="driver-location"><i class="fas fa-map-marker-alt"></i> Location</label>
+                        <input type="text" id="driver-location" name="location" placeholder="Enter your current location" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="driver-license"><i class="fas fa-id-badge"></i> License Number</label>
+                        <input type="text" id="driver-license" name="license" placeholder="Enter your driver license number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="driver-file"><i class="fas fa-file-upload"></i> Upload License/Certifications</label>
+                        <div class="file-upload">
+                            <input type="file" id="driver-file" name="file" required>
+                            <div class="file-upload-label"><i class="fas fa-cloud-upload-alt"></i> Choose File</div>
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-btn"><i class="fas fa-user-plus"></i> Create Account</button>
+                    <p class="auth-link">Already have an account? <a href="login.html">Login</a></p>
+                </form>
+
+                <!-- Hospital Signup Form -->
+                <form id="hospital-form" class="signup-form">
+                    <h3><i class="fas fa-hospital"></i> Hospital Registration</h3>
+                    <div class="form-group">
+                        <label for="hospital-name"><i class="fas fa-building"></i> Hospital Name</label>
+                        <input type="text" id="hospital-name" name="name" placeholder="Enter hospital name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="hospital-email"><i class="fas fa-envelope"></i> Email</label>
+                        <input type="email" id="hospital-email" name="email" placeholder="Enter hospital email address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="hospital-password"><i class="fas fa-lock"></i> Password</label>
+                        <div class="password-field">
+                            <input type="password" id="hospital-password" name="password" placeholder="Create a strong password" required>
+                            <span class="password-toggle" id="toggleHospitalPassword">
+                                <i class="fas fa-eye"></i>
+                            </span>
+                        </div>
+                        <small class="password-hint">Password must be at least 8 characters long</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="hospital-phone"><i class="fas fa-phone"></i> Phone Number</label>
+                        <input type="tel" id="hospital-phone" name="phone" placeholder="Enter hospital contact number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="hospital-location"><i class="fas fa-map-marker-alt"></i> Location</label>
+                        <input type="text" id="hospital-location" name="location" placeholder="Enter hospital address" required>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-stethoscope"></i> Services Offered</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="service1" name="services" value="service1">
+                                <label for="service1">Neurological</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="service2" name="services" value="service2">
+                                <label for="service2">Maternity</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="service3" name="services" value="service3">
+                                <label for="service3">Psychiatric</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="service4" name="services" value="service4">
+                                <label for="service4">Emergency Care</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="service5" name="services" value="service5">
+                                <label for="service5">Cardiology</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="service6" name="services" value="service6">
+                                <label for="service6">Pediatrics</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="hospital-file"><i class="fas fa-file-upload"></i> Upload Hospital Registration Document</label>
+                        <div class="file-upload">
+                            <input type="file" id="hospital-file" name="file" required>
+                            <div class="file-upload-label"><i class="fas fa-cloud-upload-alt"></i> Choose File</div>
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-btn"><i class="fas fa-user-plus"></i> Create Account</button>
+                    <p class="auth-link">Already have an account? <a href="login.html">Login</a></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <i class="fas fa-ambulance"></i>
+                    <h3>AmbulanceNow</h3>
+                </div>
+                <p>Providing emergency medical transportation services 24/7</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="signup.html">Register</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-envelope"></i> info@ambulancenow.com</li>
+                    <li><i class="fas fa-phone-alt"></i> +1-800-AMBULANCE</li>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Emergency Lane, Medical City</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 AmbulanceNow. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('nav');
+        
+        if (menuToggle) {
+            menuToggle.addEventListener('click', function() {
+                nav.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+            });
+        }
+
+        // Tab switching functionality
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const forms = document.querySelectorAll('.signup-form');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // Hide all forms
+                forms.forEach(form => form.classList.remove('active'));
+                
+                // Show the form corresponding to the clicked button
+                const formId = this.getAttribute('data-form');
+                document.getElementById(formId).classList.add('active');
+            });
+        });
+
+        // Password visibility toggles
+        const togglePatientPassword = document.getElementById('togglePatientPassword');
+        const patientPasswordInput = document.getElementById('patient-password');
+        
+        if (togglePatientPassword && patientPasswordInput) {
+            togglePatientPassword.addEventListener('click', function() {
+                togglePasswordVisibility(patientPasswordInput, this);
+            });
+        }
+
+        const toggleDriverPassword = document.getElementById('toggleDriverPassword');
+        const driverPasswordInput = document.getElementById('driver-password');
+        
+        if (toggleDriverPassword && driverPasswordInput) {
+            toggleDriverPassword.addEventListener('click', function() {
+                togglePasswordVisibility(driverPasswordInput, this);
+            });
+        }
+
+        const toggleHospitalPassword = document.getElementById('toggleHospitalPassword');
+        const hospitalPasswordInput = document.getElementById('hospital-password');
+        
+        if (toggleHospitalPassword && hospitalPasswordInput) {
+            toggleHospitalPassword.addEventListener('click', function() {
+                togglePasswordVisibility(hospitalPasswordInput, this);
+            });
+        }
+
+        function togglePasswordVisibility(inputField, toggleIcon) {
+            const type = inputField.getAttribute('type') === 'password' ? 'text' : 'password';
+            inputField.setAttribute('type', type);
+            toggleIcon.querySelector('i').classList.toggle('fa-eye');
+            toggleIcon.querySelector('i').classList.toggle('fa-eye-slash');
+        }
+
+        // File upload styling
+        const fileInputs = document.querySelectorAll('input[type="file"]');
+        fileInputs.forEach(input => {
+            const label = input.nextElementSibling;
+            input.addEventListener('change', function() {
+                const fileName = this.files[0] ? this.files[0].name : 'Choose File';
+                label.innerHTML = `<i class="fas fa-file-upload"></i> ${fileName}`;
+            });
+        });
+    });
+    </script>
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/navbar.js"></script>
+</body>
+</html>

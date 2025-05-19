@@ -1,0 +1,204 @@
+/* Login Page Specific Styles */
+
+/* Authentication Container */
+.auth-container {
+    max-width: 550px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.auth-card {
+    background-color: var(--card-background);
+    border-radius: var(--border-radius-lg);
+    padding: 40px;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.auth-header i {
+    font-size: 40px;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+.auth-header h2 {
+    color: var(--text-dark);
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.auth-header p {
+    color: var(--text-light);
+    font-size: 15px;
+}
+
+.auth-link {
+    text-align: center;
+    margin-top: 25px;
+    color: var(--text-light);
+    font-size: 15px;
+}
+
+.auth-link a {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.auth-link a:hover {
+    text-decoration: underline;
+}
+
+.auth-divider {
+    display: flex;
+    align-items: center;
+    margin: 25px 0;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background-color: var(--border-color);
+}
+
+.auth-divider span {
+    padding: 0 15px;
+    color: var(--text-light);
+    font-size: 14px;
+}
+
+/* Password Field */
+.password-field {
+    position: relative;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: var(--text-light);
+    z-index: 10;
+}
+
+.password-hint {
+    display: block;
+    margin-top: 5px;
+    font-size: 12px;
+    color: var(--text-light);
+}
+
+/* Form Options */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+}
+
+.forgot-password {
+    color: var(--primary-color);
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+/* Demo Accounts */
+.demo-accounts {
+    margin-bottom: 20px;
+}
+
+.demo-accounts h4 {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: var(--text-light);
+}
+
+.demo-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.demo-btn {
+    padding: 8px 15px;
+    font-size: 14px;
+    border-radius: var(--border-radius);
+    background-color: #f5f5f5;
+    color: var(--text-dark);
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.demo-btn:hover {
+    background-color: #eeeeee;
+    transform: translateY(-2px);
+}
+
+.demo-btn.patient:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.demo-btn.driver:hover {
+    border-color: var(--secondary-color);
+    color: var(--secondary-color);
+}
+
+.demo-btn.hospital:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .auth-card {
+        padding: 30px 20px;
+    }
+    
+    .form-options {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .demo-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .demo-btn {
+        width: 100%;
+    }
+}

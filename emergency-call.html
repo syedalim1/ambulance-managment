@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Call - Ambulance Booking System</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/patient-dashboard.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="emergency-page">
+    <header class="navbar patient-navbar">
+        <div class="logo">
+            <a href="index.html">
+            <h1>AmbulanceNow</h1>
+            </a>
+        </div>
+        
+        <div class="navbar-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <ul class="navbar-nav">
+            <li><a href="patient-dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+            <li><a href="book-ambulance.html"><i class="fas fa-ambulance"></i> Book Ambulance</a></li>
+            <li><a href="patient-history.html"><i class="fas fa-history"></i> Booking History</a></li>
+            <li class="navbar-profile">
+                <div class="navbar-profile-toggle">
+                    <img src="https://ui-avatars.com/api/?name=Patient&background=4e54c8&color=fff" alt="Profile">
+                    <span id="nav-user-name">Patient</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="navbar-profile-dropdown">
+                    <a href="patient-profile.html"><i class="fas fa-user"></i> My Profile</a>
+                    <hr>
+                    <a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
+            </li>
+            <li><a href="emergency-call.html" class="btn-primary active"><i class="fas fa-phone"></i> Emergency Call</a></li>
+        </ul>
+    </header>
+
+    <main class="dashboard-main">
+        <section class="emergency-container animate-fadeIn">
+            <div class="emergency-header">
+                <h1 class="animate-pulse">Emergency Call</h1>
+                <p>Get immediate assistance in case of emergency</p>
+            </div>
+            
+            <div class="emergency-actions">
+                <div class="emergency-card animate-fadeInUp">
+                    <div class="emergency-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h2>Call Emergency Services</h2>
+                    <p>Directly call emergency services for immediate assistance</p>
+                    <a href="tel:108" class="emergency-btn call-btn">
+                        <i class="fas fa-phone"></i> Call 108
+                    </a>
+                </div>
+                
+                <div class="emergency-card animate-fadeInUp delay-200">
+                    <div class="emergency-icon">
+                        <i class="fas fa-ambulance"></i>
+                    </div>
+                    <h2>Request Emergency Ambulance</h2>
+                    <p>Request an emergency ambulance to your current location</p>
+                    <button class="emergency-btn request-btn" id="request-ambulance-btn">
+                        <i class="fas fa-ambulance"></i> Request Now
+                    </button>
+                </div>
+                
+                <div class="emergency-card animate-fadeInUp delay-400">
+                    <div class="emergency-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h2>Emergency Video Consultation</h2>
+                    <p>Connect with a doctor immediately via video call</p>
+                    <button class="emergency-btn video-btn" id="video-call-btn">
+                        <i class="fas fa-video"></i> Start Video Call
+                    </button>
+                </div>
+            </div>
+            
+            <div class="emergency-info">
+                <div class="info-card animate-fadeIn delay-600">
+                    <h3><i class="fas fa-info-circle"></i> Emergency Information</h3>
+                    <p>Your current location will be automatically shared with emergency services when you make a call or request an ambulance.</p>
+                    <div class="location-info" id="location-info">
+                        <div class="location-loading">
+                            <div class="spinner"></div>
+                            <span>Detecting your location...</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-card animate-fadeIn delay-800">
+                    <h3><i class="fas fa-heartbeat"></i> Medical Profile</h3>
+                    <p>The following medical information from your profile will be shared with emergency services:</p>
+                    <ul class="medical-info-list">
+                        <li><strong>Blood Group:</strong> <span id="emergency-blood-group">B+</span></li>
+                        <li><strong>Allergies:</strong> <span id="emergency-allergies">Penicillin, Peanuts</span></li>
+                        <li><strong>Medical Conditions:</strong> <span id="emergency-conditions">Hypertension, Type 2 Diabetes</span></li>
+                        <li><strong>Current Medications:</strong> <span id="emergency-medications">Aspirin</span></li>
+                    </ul>
+                    <a href="patient-profile.html#medical-info" class="update-info-link">Update Medical Information</a>
+                </div>
+            </div>
+            
+            <div class="emergency-contacts animate-fadeIn delay-1000">
+                <h3><i class="fas fa-phone-alt"></i> Emergency Contacts</h3>
+                <p>Your emergency contacts will be notified when you request emergency services.</p>
+                
+                <div class="contacts-list">
+                    <div class="contact-item">
+                        <div class="contact-avatar">
+                            <img src="https://ui-avatars.com/api/?name=Jane+Doe&background=e74c3c&color=fff" alt="Jane Doe">
+                        </div>
+                        <div class="contact-details">
+                            <h4>Jane Doe</h4>
+                            <p><i class="fas fa-user"></i> Spouse</p>
+                            <p><i class="fas fa-phone"></i> +91 9876543211</p>
+                        </div>
+                        <button class="contact-call-btn" data-phone="+919876543211">
+                            <i class="fas fa-phone"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-avatar">
+                            <img src="https://ui-avatars.com/api/?name=Robert+Smith&background=3498db&color=fff" alt="Robert Smith">
+                        </div>
+                        <div class="contact-details">
+                            <h4>Robert Smith</h4>
+                            <p><i class="fas fa-user"></i> Brother</p>
+                            <p><i class="fas fa-phone"></i> +91 9876543212</p>
+                        </div>
+                        <button class="contact-call-btn" data-phone="+919876543212">
+                            <i class="fas fa-phone"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <a href="patient-profile.html#emergency-contacts" class="manage-contacts-link">Manage Emergency Contacts</a>
+            </div>
+        </section>
+        
+        <!-- Emergency Request Modal -->
+        <div id="emergency-modal" class="modal">
+            <div class="modal-content emergency-modal-content">
+                <span class="close-modal">&times;</span>
+                <div class="emergency-request-container">
+                    <div class="emergency-request-header">
+                        <div class="emergency-pulse-icon">
+                            <i class="fas fa-ambulance"></i>
+                        </div>
+                        <h2>Emergency Ambulance Request</h2>
+                    </div>
+                    
+                    <div class="emergency-request-form">
+                        <div class="form-group">
+                            <label for="emergency-location">Your Location</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <input type="text" id="emergency-location" name="emergency-location" placeholder="Detecting your location..." readonly>
+                                <button class="location-refresh-btn" id="refresh-location-btn">
+                                    <i class="fas fa-sync-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="emergency-type">Emergency Type</label>
+                            <select id="emergency-type" name="emergency-type" required>
+                                <option value="" disabled selected>Select emergency type</option>
+                                <option value="accident">Accident/Trauma</option>
+                                <option value="cardiac">Cardiac Emergency</option>
+                                <option value="respiratory">Respiratory Distress</option>
+                                <option value="stroke">Stroke Symptoms</option>
+                                <option value="pregnancy">Pregnancy Related</option>
+                                <option value="other">Other Medical Emergency</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="emergency-details">Additional Details</label>
+                            <textarea id="emergency-details" name="emergency-details" placeholder="Provide any additional details about the emergency..." rows="3"></textarea>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" class="btn-secondary" id="cancel-emergency-request">Cancel</button>
+                            <button type="button" class="btn-primary" id="confirm-emergency-request">Confirm Emergency Request</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Emergency Confirmation Modal -->
+        <div id="confirmation-modal" class="modal">
+            <div class="modal-content confirmation-modal-content">
+                <div class="confirmation-container">
+                    <div class="confirmation-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h2>Emergency Request Sent!</h2>
+                    <p>An ambulance has been dispatched to your location.</p>
+                    
+                    <div class="eta-container">
+                        <div class="eta-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="eta-info">
+                            <h3>Estimated Arrival Time</h3>
+                            <p id="eta-time">8-10 minutes</p>
+                        </div>
+                    </div>
+                    
+                    <div class="ambulance-tracking">
+                        <h3>Ambulance Details</h3>
+                        <div class="ambulance-details">
+                            <div class="driver-info">
+                                <div class="driver-photo">
+                                    <img src="https://ui-avatars.com/api/?name=Rajesh+Kumar&background=4e54c8&color=fff" alt="Driver">
+                                </div>
+                                <div class="driver-details">
+                                    <p class="driver-name">Syed Ali</p>
+                                    <p><i class="fas fa-phone"></i> +91 9876543210</p>
+                                    <p><i class="fas fa-car"></i> TN 01 AB 1234</p>
+                                </div>
+                            </div>
+                            <div class="tracking-map">
+                                <div class="map-placeholder">
+                                    <div class="map-pin current-location" title="Your Location">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="map-pin ambulance-location" title="Ambulance Location">
+                                        <i class="fas fa-ambulance"></i>
+                                    </div>
+                                    <div class="route-line"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="emergency-instructions">
+                        <h3>While Waiting for the Ambulance</h3>
+                        <ul>
+                            <li>Stay calm and keep the patient comfortable</li>
+                            <li>Do not move the patient unless absolutely necessary</li>
+                            <li>Clear the area to make space for emergency personnel</li>
+                            <li>Keep your phone nearby for updates</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="confirmation-actions">
+                        <button class="btn-secondary" id="call-driver-btn">
+                            <i class="fas fa-phone"></i> Call Driver
+                        </button>
+                        <button class="btn-primary" id="track-ambulance-btn">
+                            <i class="fas fa-map-marked-alt"></i> Track Ambulance
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Video Call Modal -->
+        <div id="video-call-modal" class="modal">
+            <div class="modal-content video-call-modal-content">
+                <span class="close-modal">&times;</span>
+                <div class="video-call-container">
+                    <div class="video-call-header">
+                        <h2>Emergency Video Consultation</h2>
+                        <div class="call-timer">00:00</div>
+                    </div>
+                    
+                    <div class="video-streams">
+                        <div class="remote-stream">
+                            <div class="remote-stream-placeholder">
+                                <div class="connecting-indicator">
+                                    <div class="connecting-spinner"></div>
+                                    <p>Connecting to doctor...</p>
+                                </div>
+                            </div>
+                            <div class="remote-info">
+                                <span class="remote-name">Dr. Sarah Johnson</span>
+                            </div>
+                        </div>
+                        
+                        <div class="local-stream">
+                            <div class="local-stream-placeholder">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="video-call-controls">
+                        <button class="control-btn mute-btn">
+                            <i class="fas fa-microphone"></i>
+                        </button>
+                        <button class="control-btn video-btn">
+                            <i class="fas fa-video"></i>
+                        </button>
+                        <button class="control-btn end-call-btn">
+                            <i class="fas fa-phone-slash"></i>
+                        </button>
+                        <button class="control-btn chat-btn">
+                            <i class="fas fa-comment-alt"></i>
+                        </button>
+                        <button class="control-btn share-btn">
+                            <i class="fas fa-share-square"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>AmbulanceNow</h3>
+                <p>Quick and reliable ambulance booking service</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-envelope"></i> info@ambulancenow.com</p>
+                <p><i class="fas fa-phone"></i> +91 1234567890</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 AmbulanceNow. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/navbar.js"></script>
+    <script src="js/emergency-call.js"></script>
+</body>
+</html>

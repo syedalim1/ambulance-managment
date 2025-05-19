@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Dashboard - Ambulance Booking System</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/hospital-dashboard.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar hospital-navbar">
+        <div class="logo">
+            <a href="index.html">
+            <h1>AmbulanceNow</h1>
+            </a>
+        </div>
+        
+        <div class="navbar-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <ul class="navbar-nav">
+            <li><a href="hospital-dashboard.html" class="active"><i class="fas fa-home"></i> Dashboard</a></li>
+            <li class="navbar-profile">
+                <div class="navbar-profile-toggle">
+                    <img src="https://ui-avatars.com/api/?name=YMTS+Hospital&background=1a5276&color=fff" alt="Profile">
+                    <span id="nav-hospital-name">YMTS Hospital</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="navbar-profile-dropdown">
+                    <a href="hospital-profile.html"><i class="fas fa-hospital"></i> Hospital Profile</a>
+                    <hr>
+                    <a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
+            </li>
+            <li><a href="add-driver.html" class="btn-primary"><i class="fas fa-plus"></i> Add Driver</a></li>
+        </ul>
+    </header>
+
+    <main class="dashboard-main">
+        <section class="dashboard-header hospital-dashboard-header">
+            <div class="dashboard-header-content">
+                <h1 class="animate-fadeInDown">Welcome, <span id="hospital-name">YMTS Hospital</span></h1>
+                <p class="animate-fadeInUp delay-300"><i class="fas fa-map-marker-alt"></i> <span id="hospital-location">Tirupati</span></p>
+            </div>
+        </section>
+
+        <section class="dashboard-content">
+            <div class="dashboard-card hospital-card">
+                <div class="card-header">
+                    <h2 class="animate-fadeInLeft">Hospital Details</h2>
+                </div>
+                
+                <div class="hospital-profile">
+                    <div class="profile-section animate-fadeInUp">
+                        <h3>Contact Information</h3>
+                        <p><i class="fas fa-envelope"></i> <span id="hospital-email">info@ymts.com</span></p>
+                        <p><i class="fas fa-phone"></i> <span id="hospital-phone">+91 9876543200</span></p>
+                    </div>
+                    
+                    <div class="profile-section animate-fadeInUp delay-200">
+                        <h3>Our Services</h3>
+                        <div class="services-list">
+                            <div class="service-item animate-fadeIn delay-300">
+                                <i class="fas fa-brain animate-pulse"></i>
+                                <span>Neurological</span>
+                            </div>
+                            <div class="service-item animate-fadeIn delay-400">
+                                <i class="fas fa-baby animate-pulse"></i>
+                                <span>Maternity</span>
+                            </div>
+                            <div class="service-item animate-fadeIn delay-500">
+                                <i class="fas fa-notes-medical animate-pulse"></i>
+                                <span>Psychiatric</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-actions animate-fadeInUp delay-600">
+                        <button id="edit-profile-btn" class="action-btn"><i class="fas fa-edit"></i> Edit Profile</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-card hospital-card">
+                <div class="card-header">
+                    <h2 class="animate-fadeInLeft">Driver Management</h2>
+                    <div class="card-actions">
+                        <button id="add-driver-btn" class="action-btn"><i class="fas fa-plus"></i> Add Driver</button>
+                    </div>
+                </div>
+                
+                <div class="tabs-container">
+                    <div class="tabs">
+                        <button class="tab-btn active" data-tab="all-drivers">All Drivers</button>
+                        <button class="tab-btn" data-tab="available-drivers">Available</button>
+                        <button class="tab-btn" data-tab="on-duty-drivers">On Duty</button>
+                    </div>
+                    
+                    <div class="tab-content active" id="all-drivers">
+                        <div class="table-responsive">
+                            <table class="data-table animate-fadeIn delay-300" id="drivers-table">
+                                <thead>
+                                    <tr>
+                                        <th>Driver Name</th>
+                                        <th>Email</th>
+                                        <th>Phone Number</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Syed Ali</td>
+                                        <td>rajesh@example.com</td>
+                                        <td>+91 9876543210</td>
+                                        <td><span class="status available">Available</span></td>
+                                        <td class="action-cell">
+                                            <button class="action-btn edit-btn" data-driver="Syed Ali"><i class="fas fa-edit"></i></button>
+                                            <button class="action-btn delete-btn" data-driver="Syed Ali"><i class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Priya Singh</td>
+                                        <td>priya@example.com</td>
+                                        <td>+91 9876543211</td>
+                                        <td><span class="status on-duty">On Duty</span></td>
+                                        <td class="action-cell">
+                                            <button class="action-btn edit-btn" data-driver="Priya Singh"><i class="fas fa-edit"></i></button>
+                                            <button class="action-btn delete-btn" data-driver="Priya Singh"><i class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Arun Sharma</td>
+                                        <td>arun@example.com</td>
+                                        <td>+91 9876543212</td>
+                                        <td><span class="status available">Available</span></td>
+                                        <td class="action-cell">
+                                            <button class="action-btn edit-btn" data-driver="Arun Sharma"><i class="fas fa-edit"></i></button>
+                                            <button class="action-btn delete-btn" data-driver="Arun Sharma"><i class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Meena Patel</td>
+                                        <td>meena@example.com</td>
+                                        <td>+91 9876543213</td>
+                                        <td><span class="status off-duty">Off Duty</span></td>
+                                        <td class="action-cell">
+                                            <button class="action-btn edit-btn" data-driver="Meena Patel"><i class="fas fa-edit"></i></button>
+                                            <button class="action-btn delete-btn" data-driver="Meena Patel"><i class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="available-drivers">
+                        <!-- Content will be dynamically populated by JavaScript -->
+                    </div>
+                    
+                    <div class="tab-content" id="on-duty-drivers">
+                        <!-- Content will be dynamically populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Add Driver Modal -->
+        <div id="add-driver-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div id="add-driver-container">
+                    <h2>Add New Driver</h2>
+                    <form id="add-driver-form">
+                        <div class="form-group">
+                            <label for="driver-name-input">Driver Name</label>
+                            <input type="text" id="driver-name-input" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="driver-email-input">Email</label>
+                            <input type="email" id="driver-email-input" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="driver-password-input">Password</label>
+                            <input type="password" id="driver-password-input" name="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="driver-phone-input">Phone Number</label>
+                            <input type="tel" id="driver-phone-input" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="driver-file-input">Upload License/Certifications</label>
+                            <input type="file" id="driver-file-input" name="file" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="driver-status-input">Status</label>
+                            <select id="driver-status-input" name="status">
+                                <option value="available">Available</option>
+                                <option value="off-duty">Off Duty</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="submit-btn">Add Driver</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Edit Driver Modal -->
+        <div id="edit-driver-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div id="edit-driver-container">
+                    <h2>Edit Driver</h2>
+                    <form id="edit-driver-form">
+                        <div class="form-group">
+                            <label for="edit-driver-name">Driver Name</label>
+                            <input type="text" id="edit-driver-name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-driver-email">Email</label>
+                            <input type="email" id="edit-driver-email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-driver-phone">Phone Number</label>
+                            <input type="tel" id="edit-driver-phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-driver-file">Upload License/Certifications</label>
+                            <input type="file" id="edit-driver-file" name="file">
+                            <small>Leave empty to keep current file</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-driver-status">Status</label>
+                            <select id="edit-driver-status" name="status">
+                                <option value="available">Available</option>
+                                <option value="on-duty">On Duty</option>
+                                <option value="off-duty">Off Duty</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="submit-btn">Update Driver</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Delete Confirmation Modal -->
+        <div id="delete-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div id="delete-confirmation">
+                    <h2>Confirm Deletion</h2>
+                    <p>Are you sure you want to delete driver <span id="delete-driver-name">Syed Ali</span>?</p>
+                    <p class="warning-text">This action cannot be undone.</p>
+                    <div class="modal-actions">
+                        <button id="confirm-delete" class="action-btn delete-btn">Delete</button>
+                        <button id="cancel-delete" class="action-btn cancel-btn">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>AmbulanceNow</h3>
+                <p>Providing emergency medical transportation services 24/7</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: info@ambulancenow.com</p>
+                <p>Phone: +1-800-AMBULANCE</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 AmbulanceNow. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/hospital-dashboard.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

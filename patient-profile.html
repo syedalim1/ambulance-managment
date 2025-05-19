@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Profile - Ambulance Booking System</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/patient-dashboard.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar patient-navbar">
+        <div class="logo">
+            <h1>AmbulanceNow</h1>
+        </div>
+        
+        <div class="navbar-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <ul class="navbar-nav">
+            <li><a href="patient-dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+            <li><a href="book-ambulance.html"><i class="fas fa-ambulance"></i> Book Ambulance</a></li>
+            <li><a href="patient-history.html"><i class="fas fa-history"></i> Booking History</a></li>
+            <li class="navbar-profile">
+                <div class="navbar-profile-toggle">
+                    <img src="https://ui-avatars.com/api/?name=Patient&background=4e54c8&color=fff" alt="Profile">
+                    <span id="nav-user-name">Patient</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="navbar-profile-dropdown">
+                    <a href="patient-profile.html" class="active"><i class="fas fa-user"></i> My Profile</a>
+                    <hr>
+                    <a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
+            </li>
+            <li><a href="emergency-call.html" class="btn-primary"><i class="fas fa-phone"></i> Emergency Call</a></li>
+        </ul>
+    </header>
+
+    <main class="dashboard-main">
+        <section class="dashboard-header patient-dashboard-header">
+            <div class="dashboard-header-content">
+                <h1 class="animate-fadeInDown">My Profile</h1>
+                <p class="animate-fadeInUp delay-300">Manage your personal information and preferences</p>
+            </div>
+        </section>
+
+        <section class="dashboard-content">
+            <div class="profile-container animate-fadeIn">
+                <div class="profile-sidebar">
+                    <div class="profile-avatar">
+                        <div class="avatar-container">
+                            <img src="https://ui-avatars.com/api/?name=John+Doe&background=4e54c8&color=fff&size=200" alt="Profile" id="profile-image">
+                            <div class="avatar-overlay">
+                                <label for="avatar-upload" class="avatar-upload-btn">
+                                    <i class="fas fa-camera"></i>
+                                </label>
+                                <input type="file" id="avatar-upload" accept="image/*" style="display: none;">
+                            </div>
+                        </div>
+                        <h2 id="profile-name">John Doe</h2>
+                        <p class="profile-since">Member since May 2025</p>
+                    </div>
+                    
+                    <div class="profile-menu">
+                        <a href="#personal-info" class="profile-menu-item active" data-target="personal-info">
+                            <i class="fas fa-user"></i>
+                            <span>Personal Information</span>
+                        </a>
+                        <a href="#medical-info" class="profile-menu-item" data-target="medical-info">
+                            <i class="fas fa-heartbeat"></i>
+                            <span>Medical Information</span>
+                        </a>
+                        <a href="#emergency-contacts" class="profile-menu-item" data-target="emergency-contacts">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>Emergency Contacts</span>
+                        </a>
+                        <a href="#addresses" class="profile-menu-item" data-target="addresses">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Saved Addresses</span>
+                        </a>
+                        <a href="#security" class="profile-menu-item" data-target="security">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Security</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="profile-content">
+                    <div class="profile-section active" id="personal-info">
+                        <div class="section-header">
+                            <h2>Personal Information</h2>
+                            <button class="edit-btn" id="edit-personal-info">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                        </div>
+                        
+                        <form id="personal-info-form" class="profile-form">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="first-name">First Name</label>
+                                    <input type="text" id="first-name" name="first-name" value="John" disabled>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="last-name">Last Name</label>
+                                    <input type="text" id="last-name" name="last-name" value="Doe" disabled>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" name="email" value="john.doe@example.com" disabled>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone" value="+91 9876543210" disabled>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="dob">Date of Birth</label>
+                                    <input type="date" id="dob" name="dob" value="1990-05-15" disabled>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="gender">Gender</label>
+                                    <select id="gender" name="gender" disabled>
+                                        <option value="male" selected>Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="other">Other</option>
+                                        <option value="prefer-not-to-say">Prefer not to say</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-actions" style="display: none;">
+                                <button type="button" class="btn-secondary" id="cancel-personal-info">Cancel</button>
+                                <button type="submit" class="btn-primary">Save Changes</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <div class="profile-section" id="medical-info">
+                        <div class="section-header">
+                            <h2>Medical Information</h2>
+                            <button class="edit-btn" id="edit-medical-info">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                        </div>
+                        
+                        <form id="medical-info-form" class="profile-form">
+                            <div class="form-grid">
+                                <div class="form-group full-width">
+                                    <label for="blood-group">Blood Group</label>
+                                    <select id="blood-group" name="blood-group" disabled>
+                                        <option value="A+">A+</option>
+                                        <option value="A-">A-</option>
+                                        <option value="B+" selected>B+</option>
+                                        <option value="B-">B-</option>
+                                        <option value="AB+">AB+</option>
+                                        <option value="AB-">AB-</option>
+                                        <option value="O+">O+</option>
+                                        <option value="O-">O-</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group full-width">
+                                    <label>Allergies</label>
+                                    <div class="tag-input-container">
+                                        <div class="tag-list" id="allergies-list">
+                                            <span class="tag">Penicillin<i class="fas fa-times"></i></span>
+                                            <span class="tag">Peanuts<i class="fas fa-times"></i></span>
+                                        </div>
+                                        <input type="text" id="allergies-input" placeholder="Add allergy..." disabled>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group full-width">
+                                    <label>Current Medications</label>
+                                    <div class="tag-input-container">
+                                        <div class="tag-list" id="medications-list">
+                                            <span class="tag">Aspirin<i class="fas fa-times"></i></span>
+                                        </div>
+                                        <input type="text" id="medications-input" placeholder="Add medication..." disabled>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group full-width">
+                                    <label for="medical-conditions">Medical Conditions</label>
+                                    <textarea id="medical-conditions" name="medical-conditions" rows="3" disabled>Hypertension, Type 2 Diabetes</textarea>
+                                </div>
+                                
+                                <div class="form-group full-width">
+                                    <label>Insurance Information</label>
+                                    <div class="insurance-info">
+                                        <div class="insurance-card">
+                                            <div class="insurance-card-header">
+                                                <h3>Health Insurance</h3>
+                                                <span class="insurance-status active">Active</span>
+                                            </div>
+                                            <div class="insurance-card-body">
+                                                <p><strong>Provider:</strong> <span id="insurance-provider">National Health Insurance</span></p>
+                                                <p><strong>Policy Number:</strong> <span id="insurance-policy">NHIP-123456789</span></p>
+                                                <p><strong>Valid Until:</strong> <span id="insurance-validity">December 31, 2025</span></p>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="add-insurance-btn" disabled>
+                                            <i class="fas fa-plus"></i> Add Insurance
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-actions" style="display: none;">
+                                <button type="button" class="btn-secondary" id="cancel-medical-info">Cancel</button>
+                                <button type="submit" class="btn-primary">Save Changes</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <div class="profile-section" id="emergency-contacts">
+                        <div class="section-header">
+                            <h2>Emergency Contacts</h2>
+                            <button class="edit-btn" id="edit-emergency-contacts">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                        </div>
+                        
+                        <div class="emergency-contacts-list">
+                            <div class="contact-card">
+                                <div class="contact-info">
+                                    <h3>Jane Doe</h3>
+                                    <p><i class="fas fa-user"></i> Spouse</p>
+                                    <p><i class="fas fa-phone"></i> +91 9876543211</p>
+                                    <p><i class="fas fa-envelope"></i> jane.doe@example.com</p>
+                                </div>
+                                <div class="contact-actions" style="display: none;">
+                                    <button class="action-btn edit-contact-btn"><i class="fas fa-edit"></i></button>
+                                    <button class="action-btn delete-contact-btn"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-card">
+                                <div class="contact-info">
+                                    <h3>Robert Smith</h3>
+                                    <p><i class="fas fa-user"></i> Brother</p>
+                                    <p><i class="fas fa-phone"></i> +91 9876543212</p>
+                                    <p><i class="fas fa-envelope"></i> robert.smith@example.com</p>
+                                </div>
+                                <div class="contact-actions" style="display: none;">
+                                    <button class="action-btn edit-contact-btn"><i class="fas fa-edit"></i></button>
+                                    <button class="action-btn delete-contact-btn"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+                            
+                            <button class="add-contact-btn" style="display: none;">
+                                <i class="fas fa-plus"></i> Add Emergency Contact
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-section" id="addresses">
+                        <div class="section-header">
+                            <h2>Saved Addresses</h2>
+                            <button class="edit-btn" id="edit-addresses">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                        </div>
+                        
+                        <div class="addresses-list">
+                            <div class="address-card">
+                                <div class="address-badge home">Home</div>
+                                <div class="address-info">
+                                    <h3>123 Main Street</h3>
+                                    <p>Apartment 4B</p>
+                                    <p>Tirupati, Andhra Pradesh 517501</p>
+                                    <p>India</p>
+                                </div>
+                                <div class="address-actions" style="display: none;">
+                                    <button class="action-btn edit-address-btn"><i class="fas fa-edit"></i></button>
+                                    <button class="action-btn delete-address-btn"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+                            
+                            <div class="address-card">
+                                <div class="address-badge work">Work</div>
+                                <div class="address-info">
+                                    <h3>456 Tech Park</h3>
+                                    <p>Building C, Floor 3</p>
+                                    <p>Tirupati, Andhra Pradesh 517502</p>
+                                    <p>India</p>
+                                </div>
+                                <div class="address-actions" style="display: none;">
+                                    <button class="action-btn edit-address-btn"><i class="fas fa-edit"></i></button>
+                                    <button class="action-btn delete-address-btn"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+                            
+                            <button class="add-address-btn" style="display: none;">
+                                <i class="fas fa-plus"></i> Add New Address
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-section" id="security">
+                        <div class="section-header">
+                            <h2>Security</h2>
+                        </div>
+                        
+                        <div class="security-options">
+                            <div class="security-card">
+                                <div class="security-icon">
+                                    <i class="fas fa-lock"></i>
+                                </div>
+                                <div class="security-info">
+                                    <h3>Change Password</h3>
+                                    <p>Update your password to keep your account secure</p>
+                                </div>
+                                <button class="btn-secondary">Change</button>
+                            </div>
+                            
+                            <div class="security-card">
+                                <div class="security-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div class="security-info">
+                                    <h3>Two-Factor Authentication</h3>
+                                    <p>Add an extra layer of security to your account</p>
+                                </div>
+                                <button class="btn-primary">Enable</button>
+                            </div>
+                            
+                            <div class="security-card">
+                                <div class="security-icon">
+                                    <i class="fas fa-history"></i>
+                                </div>
+                                <div class="security-info">
+                                    <h3>Login History</h3>
+                                    <p>View your recent login activity</p>
+                                </div>
+                                <button class="btn-secondary">View</button>
+                            </div>
+                            
+                            <div class="security-card">
+                                <div class="security-icon">
+                                    <i class="fas fa-bell"></i>
+                                </div>
+                                <div class="security-info">
+                                    <h3>Security Alerts</h3>
+                                    <p>Get notified about important security events</p>
+                                </div>
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="security-alerts" checked>
+                                    <label for="security-alerts"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Add Contact Modal -->
+        <div id="add-contact-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>Add Emergency Contact</h2>
+                
+                <form id="add-contact-form">
+                    <div class="form-group">
+                        <label for="contact-name">Name</label>
+                        <input type="text" id="contact-name" name="contact-name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact-relationship">Relationship</label>
+                        <input type="text" id="contact-relationship" name="contact-relationship" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact-phone">Phone Number</label>
+                        <input type="tel" id="contact-phone" name="contact-phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact-email">Email</label>
+                        <input type="email" id="contact-email" name="contact-email">
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" id="cancel-add-contact">Cancel</button>
+                        <button type="submit" class="btn-primary">Add Contact</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Add Address Modal -->
+        <div id="add-address-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>Add New Address</h2>
+                
+                <form id="add-address-form">
+                    <div class="form-group">
+                        <label for="address-label">Address Label</label>
+                        <select id="address-label" name="address-label" required>
+                            <option value="home">Home</option>
+                            <option value="work">Work</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address-line1">Address Line 1</label>
+                        <input type="text" id="address-line1" name="address-line1" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address-line2">Address Line 2</label>
+                        <input type="text" id="address-line2" name="address-line2">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address-city">City</label>
+                        <input type="text" id="address-city" name="address-city" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address-state">State</label>
+                        <input type="text" id="address-state" name="address-state" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address-postal">Postal Code</label>
+                        <input type="text" id="address-postal" name="address-postal" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address-country">Country</label>
+                        <input type="text" id="address-country" name="address-country" required value="India">
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" id="cancel-add-address">Cancel</button>
+                        <button type="submit" class="btn-primary">Add Address</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Change Password Modal -->
+        <div id="change-password-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>Change Password</h2>
+                
+                <form id="change-password-form">
+                    <div class="form-group">
+                        <label for="current-password">Current Password</label>
+                        <input type="password" id="current-password" name="current-password" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="new-password">New Password</label>
+                        <input type="password" id="new-password" name="new-password" required>
+                        <div class="password-strength">
+                            <div class="strength-meter">
+                                <div class="strength-bar"></div>
+                            </div>
+                            <span class="strength-text">Password strength</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm New Password</label>
+                        <input type="password" id="confirm-password" name="confirm-password" required>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" id="cancel-change-password">Cancel</button>
+                        <button type="submit" class="btn-primary">Change Password</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>AmbulanceNow</h3>
+                <p>Quick and reliable ambulance booking service</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-envelope"></i> info@ambulancenow.com</p>
+                <p><i class="fas fa-phone"></i> +91 1234567890</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 AmbulanceNow. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/navbar.js"></script>
+    <script src="js/patient-profile.js"></script>
+</body>
+</html>

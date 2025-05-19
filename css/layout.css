@@ -1,0 +1,124 @@
+/* Layout adjustments for fixed navbar */
+:root {
+  --navbar-height: 70px;
+  --content-padding-top: 90px;
+}
+
+body {
+  padding-top: var(--navbar-height);
+  overflow-x: hidden;
+}
+
+.dashboard-main {
+  padding-top: var(--content-padding-top);
+}
+
+/* Adjust dashboard header for new layout */
+.dashboard-header {
+  margin-top: -20px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 992px) {
+  :root {
+    --navbar-height: 60px;
+    --content-padding-top: 80px;
+  }
+  
+  .dashboard-header {
+    margin-top: -10px;
+  }
+}
+
+/* Utility classes for spacing */
+.mt-navbar {
+  margin-top: var(--navbar-height);
+}
+
+.pt-navbar {
+  padding-top: var(--navbar-height);
+}
+
+/* Menu open state - prevent body scrolling */
+body.menu-open {
+  overflow: hidden;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Container width adjustments */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+@media (max-width: 1220px) {
+  .container {
+    max-width: 100%;
+  }
+}
+
+/* Section spacing */
+.section {
+  padding: 60px 0;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 40px 0;
+  }
+}
+
+/* Fix for iOS Safari 100vh issue */
+@supports (-webkit-touch-callout: none) {
+  .min-h-screen {
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* Z-index management */
+.z-navbar {
+  z-index: 1000;
+}
+
+.z-dropdown {
+  z-index: 990;
+}
+
+.z-modal {
+  z-index: 1100;
+}
+
+/* Backdrop for modals */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1050;
+  display: none;
+}
+
+.backdrop.active {
+  display: block;
+}
+
+/* Content wrapper for proper spacing */
+.content-wrapper {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .content-wrapper {
+    padding: 15px;
+  }
+}

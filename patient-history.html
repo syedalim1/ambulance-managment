@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking History - Ambulance Booking System</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/patient-dashboard.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar patient-navbar">
+        <div class="logo">
+            <a href="index.html">
+            <h1>AmbulanceNow</h1>
+            </a>
+        </div>
+        
+        <div class="navbar-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <ul class="navbar-nav">
+            <li><a href="patient-dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+            <li><a href="book-ambulance.html"><i class="fas fa-ambulance"></i> Book Ambulance</a></li>
+            <li><a href="patient-history.html" class="active"><i class="fas fa-history"></i> Booking History</a></li>
+            <li class="navbar-profile">
+                <div class="navbar-profile-toggle">
+                    <img src="https://ui-avatars.com/api/?name=Patient&background=4e54c8&color=fff" alt="Profile">
+                    <span id="nav-user-name">Patient</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="navbar-profile-dropdown">
+                    <a href="patient-profile.html"><i class="fas fa-user"></i> My Profile</a>
+                    <hr>
+                    <a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
+            </li>
+            <li><a href="emergency-call.html" class="btn-primary"><i class="fas fa-phone"></i> Emergency Call</a></li>
+        </ul>
+    </header>
+
+    <main class="dashboard-main">
+        <section class="dashboard-header patient-dashboard-header">
+            <div class="dashboard-header-content">
+                <h1 class="animate-fadeInDown">Booking History</h1>
+                <p class="animate-fadeInUp delay-300">View and manage your ambulance booking history</p>
+            </div>
+        </section>
+
+        <section class="dashboard-content">
+            <div class="dashboard-card patient-card animate-fadeIn">
+                <div class="card-header">
+                    <h2>Your Bookings</h2>
+                    <div class="filter-controls">
+                        <input type="text" id="search-bookings" placeholder="Search bookings...">
+                        <select id="status-filter">
+                            <option value="">All Statuses</option>
+                            <option value="completed">Completed</option>
+                            <option value="upcoming">Upcoming</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="table-responsive">
+                    <table class="data-table" id="bookings-table">
+                        <thead>
+                            <tr>
+                                <th>Booking ID</th>
+                                <th>Date & Time</th>
+                                <th>Pickup Location</th>
+                                <th>Destination</th>
+                                <th>Ambulance Type</th>
+                                <th>Hospital</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="animate-fadeIn">
+                                <td>AMB12345</td>
+                                <td>May 19, 2025 - 10:30 AM</td>
+                                <td>123 Main St, Tirupati</td>
+                                <td>YMTS Hospital, Tirupati</td>
+                                <td>Basic</td>
+                                <td>YMTS Hospital</td>
+                                <td><span class="status upcoming">Upcoming</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn view-btn" data-booking="AMB12345"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn edit-btn" data-booking="AMB12345"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn cancel-btn" data-booking="AMB12345"><i class="fas fa-times"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="animate-fadeIn delay-100">
+                                <td>AMB12346</td>
+                                <td>May 15, 2025 - 09:00 AM</td>
+                                <td>456 Park Ave, Chennai</td>
+                                <td>City General Hospital, Chennai</td>
+                                <td>Advanced</td>
+                                <td>City General Hospital</td>
+                                <td><span class="status completed">Completed</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn view-btn" data-booking="AMB12346"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn review-btn" data-booking="AMB12346"><i class="fas fa-star"></i></button>
+                                        <button class="action-btn download-btn" data-booking="AMB12346"><i class="fas fa-download"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="animate-fadeIn delay-200">
+                                <td>AMB12347</td>
+                                <td>May 10, 2025 - 14:45 PM</td>
+                                <td>789 Tech Park, Bangalore</td>
+                                <td>Metro Medical Center, Bangalore</td>
+                                <td>ICU</td>
+                                <td>Metro Medical Center</td>
+                                <td><span class="status completed">Completed</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn view-btn" data-booking="AMB12347"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn review-btn" data-booking="AMB12347"><i class="fas fa-star"></i></button>
+                                        <button class="action-btn download-btn" data-booking="AMB12347"><i class="fas fa-download"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="animate-fadeIn delay-300">
+                                <td>AMB12348</td>
+                                <td>May 5, 2025 - 11:15 AM</td>
+                                <td>321 Lake View, Tirupati</td>
+                                <td>YMTS Hospital, Tirupati</td>
+                                <td>Basic</td>
+                                <td>YMTS Hospital</td>
+                                <td><span class="status cancelled">Cancelled</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn view-btn" data-booking="AMB12348"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn rebook-btn" data-booking="AMB12348"><i class="fas fa-redo"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="animate-fadeIn delay-400">
+                                <td>AMB12349</td>
+                                <td>May 1, 2025 - 16:30 PM</td>
+                                <td>567 River Road, Chennai</td>
+                                <td>City General Hospital, Chennai</td>
+                                <td>Advanced</td>
+                                <td>City General Hospital</td>
+                                <td><span class="status completed">Completed</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn view-btn" data-booking="AMB12349"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn review-btn" data-booking="AMB12349"><i class="fas fa-star"></i></button>
+                                        <button class="action-btn download-btn" data-booking="AMB12349"><i class="fas fa-download"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="pagination">
+                    <button class="pagination-btn prev" disabled><i class="fas fa-chevron-left"></i></button>
+                    <div class="pagination-pages">
+                        <button class="pagination-page active">1</button>
+                        <button class="pagination-page">2</button>
+                        <button class="pagination-page">3</button>
+                    </div>
+                    <button class="pagination-btn next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+            
+            <div class="dashboard-card patient-card animate-fadeIn delay-300">
+                <div class="card-header">
+                    <h2>Booking Statistics</h2>
+                </div>
+                
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-ambulance"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Total Bookings</h3>
+                            <p class="stat-value">12</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Completed</h3>
+                            <p class="stat-value">9</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Upcoming</h3>
+                            <p class="stat-value">2</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-times-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Cancelled</h3>
+                            <p class="stat-value">1</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chart-container">
+                    <canvas id="bookings-chart"></canvas>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Booking Details Modal -->
+        <div id="booking-details-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div class="booking-details-container">
+                    <h2>Booking Details</h2>
+                    
+                    <div class="booking-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Booking ID:</span>
+                            <span class="detail-value" id="modal-booking-id">AMB12345</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Date & Time:</span>
+                            <span class="detail-value" id="modal-datetime">May 19, 2025 - 10:30 AM</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Pickup Location:</span>
+                            <span class="detail-value" id="modal-pickup">123 Main St, Tirupati</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Destination:</span>
+                            <span class="detail-value" id="modal-destination">YMTS Hospital, Tirupati</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Ambulance Type:</span>
+                            <span class="detail-value" id="modal-type">Basic</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Status:</span>
+                            <span class="detail-value status upcoming" id="modal-status">Upcoming</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Additional Services:</span>
+                            <span class="detail-value" id="modal-services">Oxygen Support, Wheelchair</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Patient Condition:</span>
+                            <span class="detail-value" id="modal-condition">Stable, requires regular monitoring</span>
+                        </div>
+                    </div>
+                    
+                    <div class="driver-info">
+                        <h3>Driver Information</h3>
+                        <div class="driver-details">
+                            <div class="driver-photo">
+                                <img src="https://ui-avatars.com/api/?name=Rajesh+Kumar&background=4e54c8&color=fff" alt="Driver">
+                            </div>
+                            <div class="driver-contact">
+                                <p class="driver-name">Syed Ali</p>
+                                <p><i class="fas fa-phone"></i> +91 9876543210</p>
+                                <p><i class="fas fa-car"></i> TN 01 AB 1234</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="booking-route">
+                        <h3>Route Information</h3>
+                        <div class="route-map">
+                            <div class="route-marker start">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Pickup</span>
+                            </div>
+                            <div class="route-line"></div>
+                            <div class="route-marker end">
+                                <i class="fas fa-hospital"></i>
+                                <span>Destination</span>
+                            </div>
+                        </div>
+                        <div class="route-details">
+                            <p><i class="fas fa-route"></i> Distance: <span id="modal-distance">5.2 km</span></p>
+                            <p><i class="fas fa-clock"></i> Estimated Time: <span id="modal-time">15 minutes</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <button class="btn-secondary" id="modal-action-secondary">Edit Booking</button>
+                        <button class="btn-primary" id="modal-action-primary">Track Ambulance</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Review Modal -->
+        <div id="review-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div class="review-container">
+                    <h2>Rate Your Experience</h2>
+                    <p>Booking ID: <span id="review-booking-id">AMB12346</span></p>
+                    
+                    <div class="rating-container">
+                        <h3>Overall Rating</h3>
+                        <div class="star-rating">
+                            <i class="fas fa-star" data-rating="1"></i>
+                            <i class="fas fa-star" data-rating="2"></i>
+                            <i class="fas fa-star" data-rating="3"></i>
+                            <i class="fas fa-star" data-rating="4"></i>
+                            <i class="fas fa-star" data-rating="5"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="rating-categories">
+                        <div class="rating-category">
+                            <h4>Driver Behavior</h4>
+                            <div class="star-rating small">
+                                <i class="fas fa-star" data-rating="1"></i>
+                                <i class="fas fa-star" data-rating="2"></i>
+                                <i class="fas fa-star" data-rating="3"></i>
+                                <i class="fas fa-star" data-rating="4"></i>
+                                <i class="fas fa-star" data-rating="5"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="rating-category">
+                            <h4>Ambulance Cleanliness</h4>
+                            <div class="star-rating small">
+                                <i class="fas fa-star" data-rating="1"></i>
+                                <i class="fas fa-star" data-rating="2"></i>
+                                <i class="fas fa-star" data-rating="3"></i>
+                                <i class="fas fa-star" data-rating="4"></i>
+                                <i class="fas fa-star" data-rating="5"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="rating-category">
+                            <h4>Timeliness</h4>
+                            <div class="star-rating small">
+                                <i class="fas fa-star" data-rating="1"></i>
+                                <i class="fas fa-star" data-rating="2"></i>
+                                <i class="fas fa-star" data-rating="3"></i>
+                                <i class="fas fa-star" data-rating="4"></i>
+                                <i class="fas fa-star" data-rating="5"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="review-comment">
+                        <h3>Your Comments</h3>
+                        <textarea id="review-comment" placeholder="Share your experience with us..."></textarea>
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <button class="btn-secondary" id="skip-review-btn">Skip</button>
+                        <button class="btn-primary" id="submit-review-btn">Submit Review</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>AmbulanceNow</h3>
+                <p>Quick and reliable ambulance booking service</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-envelope"></i> info@ambulancenow.com</p>
+                <p><i class="fas fa-phone"></i> +91 1234567890</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 AmbulanceNow. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/navbar.js"></script>
+    <script src="js/patient-history.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>
